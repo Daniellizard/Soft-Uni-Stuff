@@ -1,0 +1,78 @@
+using System;
+
+namespace PrimeNumbersTask
+{
+    class PrimeNumbersTask
+    {
+        static void Main()
+        {
+            Console.WriteLine("Please input the first number to be checked:");
+            int limmiter = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("\nPlease Input the last number to be checked;");
+            int number = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("\nThe prime numbers in this interval are:");
+
+            int count = 0;
+            int sum = 0;
+
+            int fin1 = 0;
+            int fin3 = 0;
+            int fin7 = 0;
+            int fin9 = 0;
+
+
+
+            for (int i = limmiter; i <= number; i++)
+            {
+                for (int j = (int)Math.Sqrt(i); j > 0; j--)
+                {
+                    if (j == 1 && i != 1)
+                    {
+                        Console.Write(i + " ");
+                        count++;
+                        sum += i;
+
+                        for (int k = 0; k <= i; k++)
+                        {
+                            if (((i - k ) % 10 )== 0)
+                            {
+                                switch (k)
+                                {
+                                    case 1:
+                                        fin1++;
+                                        break;
+                                    case 3:
+                                        fin3++;
+                                        break;
+                                    case 7:
+                                        fin7++;
+                                        break;
+                                    case 9:
+                                        fin9++;
+                                        break;
+                                }
+                            }
+                        }
+
+
+                        break;
+                    }
+                    if (i % j == 0)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            Console.WriteLine("\n\nThe number of prime numbers in this interval is: " + count);
+            Console.WriteLine("\nThe sum of the prime numbers in this Interval is: " + sum);
+
+            Console.WriteLine("\nThe number of the prime numbers with last digit 1 is: " + fin1);
+            Console.WriteLine("\nThe number of the prime numbers with last digit 3 is: " + fin3);
+            Console.WriteLine("\nThe number of the prime numbers with last digit 7 is: " + fin7);
+            Console.WriteLine("\nThe number of the prime numbers with last digit 9 is: " + fin9 + "\n");
+        }
+    }
+}
